@@ -1,0 +1,54 @@
+body {
+    background: #232323;
+    text-align: center;
+}
+
+h1,
+h2 {
+    color: white;
+}
+
+
+/* ----------------------------- */
+
+
+/* Colt's Css (old school) */
+
+
+/* .container {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.square {
+    background: purple;
+    width: 30%;
+    padding-top: 30%;
+    margin: 1.66%;
+    float: left;
+} */
+
+
+/* ----------------------------- */
+
+.container {
+    /* width: 60%; */
+    max-width: 600px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    justify-content: center;
+    /* place-content: center; */
+    /* height: 100vh; */
+    margin-top: 30px;
+}
+
+.square {
+    background: purple;
+    border-radius: 15%;
+    height: 175px;
+    /* width: 100px; */
+    /* padding-top: 30%; */
+}
