@@ -54,3 +54,7 @@ body {
     background: white;
     height: 30px;
 }
+
+.selected {
+    background: lightgreen;
+}
