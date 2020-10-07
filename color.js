@@ -9,7 +9,7 @@ let colors = [
 
 const squares = document.querySelectorAll(".square"); // NodeList(6)
 
-let pickedColor = colors[3];
+let pickedColor = pickColor();
 document.getElementById("colorDisplay").innerHTML = pickedColor;
 
 const message = document.getElementById("correctOrNot");
@@ -32,3 +32,7 @@ const changeColors = (color) => {
     squares[i].style.background = color;
   }
 };
+function pickColor() {
+  let random = Math.floor(Math.random() * colors.length);
+  return colors[random];
+}
