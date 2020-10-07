@@ -1,11 +1,12 @@
-let colors = [
-  "rgb(255, 0, 0)", // red
-  "rgb(255, 255, 0)", // yellow
-  "rgb(0, 255, 0)", // lime
-  "rgb(0, 255, 255)", // cyan/aqua
-  "rgb(0, 0, 255)", // blue
-  "rgb(255, 0, 255)", // magenta
-];
+let colors = generateRandomColors(6);
+// [
+//   "rgb(255, 0, 0)", // red
+//   "rgb(255, 255, 0)", // yellow
+//   "rgb(0, 255, 0)", // lime
+//   "rgb(0, 255, 255)", // cyan/aqua
+//   "rgb(0, 0, 255)", // blue
+//   "rgb(255, 0, 255)", // magenta
+// ]
 
 const squares = document.querySelectorAll(".square"); // NodeList(6)
 
@@ -35,4 +36,18 @@ const changeColors = (color) => {
 function pickColor() {
   let random = Math.floor(Math.random() * colors.length);
   return colors[random];
+}
+function generateRandomColors(n) {
+  let arr = [];
+  for (let i = 0; i < n; i++) {
+    arr.push(randomColor());
+  }
+  return arr;
+}
+function randomColor() {
+  // pick 3 numbers ('r', 'g', and 'b') from 0 to 255:
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  return "rgb(" + r + ", " + g + ", " + b + ")";
 }
