@@ -1,3 +1,5 @@
+const squares = document.querySelectorAll(".square"); // NodeList(6)
+
 let colors = generateRandomColors(6);
 // [
 //   "rgb(255, 0, 0)", // red
@@ -8,31 +10,43 @@ let colors = generateRandomColors(6);
 //   "rgb(255, 0, 255)", // magenta
 // ]
 
-const squares = document.querySelectorAll(".square"); // NodeList(6)
-
 let pickedColor = pickColor();
 document.getElementById("colorDisplay").innerHTML = pickedColor;
 
 const message = document.getElementById("correctOrNot");
+const colorDisplay = document.getElementById("colorDisplay");
+const resetButton = document.querySelector("#reset");
+
+resetButton.addEventListener("click", () => {
+  colors = generateRandomColors(6);
+  pickedColor = pickColor();
+  colorDisplay.textContent = pickedColor;
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].style.background = colors[i];
+  }
+  colorDisplay.style.background = "#232323";
+});
 
 for (let i = 0; i < squares.length; i++) {
   squares[i].style.background = colors[i];
   squares[i].addEventListener("click", function () {
     let clickedColor = this.style.background;
     if (clickedColor === pickedColor) {
-      message.innerHTML = "Correct!! :)";
+      message.innerHTML = "Correct!!! :)";
+      resetButton.textContent = "Play Again?";
       changeColors(pickedColor);
+      colorDisplay.style.background = pickedColor;
     } else {
       this.style.background = "#232323";
       message.textContent = "Try Again!";
     }
   });
 }
-const changeColors = (color) => {
+function changeColors(color) {
   for (let i = 0; i < squares.length; i++) {
     squares[i].style.background = color;
   }
-};
+}
 function pickColor() {
   let random = Math.floor(Math.random() * colors.length);
   return colors[random];

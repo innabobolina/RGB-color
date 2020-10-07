@@ -38,7 +38,7 @@ body {
     justify-content: center;
     /* place-content: center; */
     /* height: 100vh; */
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .square {
@@ -47,4 +47,10 @@ body {
     height: 175px;
     /* width: 100px; */
     /* padding-top: 30%; */
+}
+
+#stripe {
+    color: black;
+    background: white;
+    height: 30px;
 }
