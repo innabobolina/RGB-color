@@ -26,6 +26,7 @@ easyButton.addEventListener("click", () => {
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
+  colorDisplay.style.background = "#232323";
   for (let i = 0; i < squares.length; i++) {
     if (colors[i]) {
       squares[i].style.background = colors[i];
@@ -39,6 +40,7 @@ hardButton.addEventListener("click", () => {
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
+  colorDisplay.style.background = "#232323";
   for (let i = 0; i < squares.length; i++) {
     squares[i].style.background = colors[i];
     squares[i].style.display = "block";
