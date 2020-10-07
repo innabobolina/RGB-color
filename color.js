@@ -12,54 +12,40 @@ let colors = generateRandomColors(numSquares);
 
 const message = document.getElementById("correctOrNot");
 const colorDisplay = document.getElementById("colorDisplay");
-const resetButton = document.querySelector("#reset");
-const easyButton = document.querySelector("#easy");
-const hardButton = document.querySelector("#hard");
 const h2 = document.querySelector("h2");
+const resetButton = document.querySelector("#reset");
+const modeButtons = document.querySelectorAll(".mode");
 
 let pickedColor = pickColor();
 colorDisplay.textContent = pickedColor;
 
-easyButton.addEventListener("click", () => {
-  easyButton.classList.add("selected");
-  hardButton.classList.remove("selected");
-  numSquares = 3;
-  colors = generateRandomColors(numSquares);
-  pickedColor = pickColor();
-  colorDisplay.textContent = pickedColor;
-  h2.style.background = "#232323";
-  message.textContent = "";
-  for (let i = 0; i < squares.length; i++) {
-    if (colors[i]) {
-      squares[i].style.background = colors[i];
-    } else squares[i].style.display = "none";
-  }
-});
-hardButton.addEventListener("click", () => {
-  hardButton.classList.add("selected");
-  easyButton.classList.remove("selected");
-  numSquares = 6;
-  colors = generateRandomColors(numSquares);
-  pickedColor = pickColor();
-  colorDisplay.textContent = pickedColor;
-  h2.style.background = "#232323";
-  message.textContent = "";
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].style.background = colors[i];
-    squares[i].style.display = "block";
-  }
-});
+for (let button of modeButtons) {
+  button.addEventListener("click", function () {
+    modeButtons[0].classList.remove("selected");
+    modeButtons[1].classList.remove("selected");
+    this.classList.add("selected");
+    this.textContent === "Easy" ? (numSquares = 3) : (numSquares = 6);
+    reset();
+  });
+}
 
-resetButton.addEventListener("click", () => {
+function reset() {
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
   message.textContent = "";
   resetButton.textContent = "New Colors";
   for (let i = 0; i < squares.length; i++) {
-    squares[i].style.background = colors[i];
+    if (colors[i]) {
+      squares[i].style.display = "block";
+      squares[i].style.background = colors[i];
+    } else squares[i].style.display = "none";
   }
   h2.style.background = "#232323";
+}
+
+resetButton.addEventListener("click", () => {
+  reset();
 });
 
 for (let i = 0; i < squares.length; i++) {
