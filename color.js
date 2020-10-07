@@ -10,14 +10,15 @@ let colors = generateRandomColors(numSquares);
 //   "rgb(255, 0, 255)", // magenta
 // ]
 
-let pickedColor = pickColor();
-document.getElementById("colorDisplay").innerHTML = pickedColor;
-
 const message = document.getElementById("correctOrNot");
 const colorDisplay = document.getElementById("colorDisplay");
 const resetButton = document.querySelector("#reset");
 const easyButton = document.querySelector("#easy");
 const hardButton = document.querySelector("#hard");
+const h2 = document.querySelector("h2");
+
+let pickedColor = pickColor();
+colorDisplay.textContent = pickedColor;
 
 easyButton.addEventListener("click", () => {
   easyButton.classList.add("selected");
@@ -26,7 +27,8 @@ easyButton.addEventListener("click", () => {
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
-  colorDisplay.style.background = "#232323";
+  h2.style.background = "#232323";
+  message.textContent = "";
   for (let i = 0; i < squares.length; i++) {
     if (colors[i]) {
       squares[i].style.background = colors[i];
@@ -40,7 +42,8 @@ hardButton.addEventListener("click", () => {
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
-  colorDisplay.style.background = "#232323";
+  h2.style.background = "#232323";
+  message.textContent = "";
   for (let i = 0; i < squares.length; i++) {
     squares[i].style.background = colors[i];
     squares[i].style.display = "block";
@@ -51,10 +54,12 @@ resetButton.addEventListener("click", () => {
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
+  message.textContent = "";
+  resetButton.textContent = "New Colors";
   for (let i = 0; i < squares.length; i++) {
     squares[i].style.background = colors[i];
   }
-  colorDisplay.style.background = "#232323";
+  h2.style.background = "#232323";
 });
 
 for (let i = 0; i < squares.length; i++) {
@@ -65,7 +70,7 @@ for (let i = 0; i < squares.length; i++) {
       message.innerHTML = "Correct!!! :)";
       resetButton.textContent = "Play Again?";
       changeColors(pickedColor);
-      colorDisplay.style.background = pickedColor;
+      h2.style.background = pickedColor;
     } else {
       this.style.background = "#232323";
       message.textContent = "Try Again!";
