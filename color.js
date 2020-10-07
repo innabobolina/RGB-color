@@ -9,18 +9,26 @@ let colors = [
 
 const squares = document.querySelectorAll(".square"); // NodeList(6)
 
+let pickedColor = colors[3];
+document.getElementById("colorDisplay").innerHTML = pickedColor;
+
+const message = document.getElementById("correctOrNot");
+
 for (let i = 0; i < squares.length; i++) {
   squares[i].style.background = colors[i];
   squares[i].addEventListener("click", function () {
     let clickedColor = this.style.background;
-    if (clickedColor === pickedColor)
-      document.getElementById("correctOrNot").textContent = "Correct";
-    else {
+    if (clickedColor === pickedColor) {
+      message.innerHTML = "Correct!! :)";
+      changeColors(pickedColor);
+    } else {
       this.style.background = "#232323";
-      document.getElementById("correctOrNot").textContent = "Try Again!";
+      message.textContent = "Try Again!";
     }
   });
 }
-
-let pickedColor = colors[3];
-document.getElementById("colorDisplay").innerHTML = pickedColor;
+const changeColors = (color) => {
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].style.background = color;
+  }
+};
