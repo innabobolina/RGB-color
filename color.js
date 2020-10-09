@@ -47,13 +47,13 @@ function setupSquares() {
     squares[i].addEventListener("click", function () {
       let clickedColor = this.style.background;
       if (clickedColor === pickedColor) {
-        message.innerHTML = "Correct!!! :)";
+        message.innerHTML = "Correct!";
         resetButton.textContent = "Play Again?";
         changeColors(pickedColor);
         h2.style.background = pickedColor;
       } else {
         this.style.background = "#232323";
-        message.textContent = "Try Again!";
+        message.textContent = "Wrong";
       }
     });
   }
